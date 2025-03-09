@@ -75,6 +75,38 @@ namespace task6dlg
                 arr[i] = temp;
             }
         }
+        public static void StudentShakerSort(double[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                bool swapped = false;
+                double temp;
+                for (int j = i; j < arr.Length - i - 1; j++)
+                {
+                    if (arr[j] > arr[j + 1])
+                    {
+                        temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                        swapped = true;
+                    }
+                }
+                for (int j = arr.Length - 1 - i; j > i; j--)
+                {
+                    if (arr[j - 1] > arr[j])
+                    {
+                        temp = arr[j - 1];
+                        arr[j - 1] = arr[j];
+                        arr[j] = temp;
+                        swapped = true;
+                    }
+                }
+                if (!swapped)
+                {
+                    break;
+                }
+            }
+        }
     }
     internal class Program
     {
