@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,7 +48,7 @@ namespace task6dlg
                 int min = i;
                 for (int j = i + 1; j < arr.Length; j++)
                 {
-                    if (arr[i] < arr[min])
+                    if (arr[j] < arr[min])
                     {
                         min = j;
                     }
@@ -106,6 +107,14 @@ namespace task6dlg
                     break;
                 }
             }
+        }
+        public static long MeasureSortingTime(SortingMethod sortMethod, double[] arr)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            sortMethod(arr);
+            stopwatch.Stop();
+            return stopwatch.ElapsedMilliseconds;
         }
     }
     internal class Program
