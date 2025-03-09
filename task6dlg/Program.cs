@@ -167,7 +167,7 @@ namespace task6dlg
             string[] path = Directory.GetFiles("C:\\c#labs\\task6dlg\\task6dlg\\TXT", "*.txt");
             foreach (string filePath in path)
             {
-                double[] array = Array.ConvertAll(File.ReadAllText(filePath).Split(' '), Convert.ToDouble);
+                double[] array = Array.ConvertAll(File.ReadAllText(filePath).Split(' ').Select(s=>s.Trim()).ToArray(), Convert.ToDouble);
                 Console.WriteLine("Check Selection sort: ");
                 Sort.CheckSortMethods(Sort.DeveloperSelectionSort, Sort.StudentSelectionSort, array);
                 Console.WriteLine("Check Shaker sort: ");
