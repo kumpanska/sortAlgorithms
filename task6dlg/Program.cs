@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace task6dlg
 {
@@ -163,6 +164,16 @@ namespace task6dlg
     {
         static void Main(string[] args)
         {
+            string[] path = Directory.GetFiles("C:\\c#labs\\task6dlg\\task6dlg\\TXT", "*.txt");
+            foreach (string filePath in path)
+            {
+                double[] array = Array.ConvertAll(File.ReadAllText(filePath).Split(' '), Convert.ToDouble);
+                Console.WriteLine("Check Selection sort: ");
+                Sort.CheckSortMethods(Sort.DeveloperSelectionSort, Sort.StudentSelectionSort, array);
+                Console.WriteLine("Check Shaker sort: ");
+                Sort.CheckSortMethods(Sort.DeveloperShakerSort, Sort.StudentShakerSort, array);
+            }
+            
         }
     }
 }
