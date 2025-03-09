@@ -39,6 +39,24 @@ namespace task6dlg
                 { break; }
             }
         }
+        public static void DeveloperSelectionSort(double[] arr)
+        {
+            double temp;
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                int min = i;
+                for (int j = i + 1; j < arr.Length; j++)
+                {
+                    if (arr[i] < arr[min])
+                    {
+                        min = j;
+                    }
+                }
+                temp = arr[i];
+                arr[i] = arr[min];
+                arr[min] = temp;
+            }
+        }
     }
     internal class Program
     {
