@@ -57,6 +57,24 @@ namespace task6dlg
                 arr[min] = temp;
             }
         }
+        public static void StudentSelectionSort(double[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                int smallestVal = i;
+                for (int j = i + 1; j < n; j++)
+                {
+                    if (arr[j] < arr[smallestVal])
+                    {
+                        smallestVal = j;
+                    }
+                }
+                double temp = arr[smallestVal];
+                arr[smallestVal] = arr[i];
+                arr[i] = temp;
+            }
+        }
     }
     internal class Program
     {
