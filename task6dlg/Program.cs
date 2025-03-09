@@ -120,7 +120,7 @@ namespace task6dlg
         {
             return tstud >= Math.Max(0, teta / 5 - 200) && tstud <= 5 * teta + 200;
         }
-        public static bool isEqualAfterSorting(double[] array1, double[] array2)
+        public static bool IsEqualAfterSorting(double[] array1, double[] array2)
         {
             if (array1.Length != array2.Length)
             { return false; }
@@ -130,6 +130,33 @@ namespace task6dlg
                 { return false; }
             }    
             return true;
+        }
+        public static void OutputSortedArray(double[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write(arr[i]+" ");
+            }
+            Console.WriteLine();
+        }
+        public static void CheckSortMethods(SortingMethod developerSort, SortingMethod studentSort, double[] arr)
+        {
+            double[] devArr = (double[])arr.Clone();
+            double[] studArr = (double[])arr.Clone();
+            long developerSortTime = MeasureSortingTime(developerSort, devArr);
+            long studentSortTime = MeasureSortingTime(studentSort, studArr);
+            Console.WriteLine($"Time of developer sort method: {developerSortTime} ms");
+            OutputSortedArray(devArr);
+            Console.WriteLine($"Time of student sort method: {studentSortTime} ms");
+            OutputSortedArray(studArr);
+            bool isEqualArrays = IsEqualAfterSorting(devArr, studArr);
+            bool isTimeComparable = IsTimeComparable(developerSortTime, studentSortTime);
+            Console.WriteLine(isTimeComparable && isEqualArrays ?"Algorithm worked correctly": "Algorithm is not correct");
+            if (!isTimeComparable)
+            { Console.WriteLine("Time is not comparable"); }
+            if (!isEqualArrays)
+            { Console.WriteLine("Arrays are not equal"); }
+           
         }
     }
     internal class Program
