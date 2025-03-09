@@ -116,6 +116,21 @@ namespace task6dlg
             stopwatch.Stop();
             return stopwatch.ElapsedMilliseconds;
         }
+        public static bool IsTimeComparable(long teta, long tstud)
+        {
+            return tstud >= Math.Max(0, teta / 5 - 200) && tstud <= 5 * teta + 200;
+        }
+        public static bool isEqualAfterSorting(double[] array1, double[] array2)
+        {
+            if (array1.Length != array2.Length)
+            { return false; }
+            for (int i = 0; i < array1.Length; i++)
+            {
+                if (array1[i] != array2[i])
+                { return false; }
+            }    
+            return true;
+        }
     }
     internal class Program
     {
